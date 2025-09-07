@@ -559,21 +559,21 @@ const defaultTestimonials: Testimonial[] = [
     company: 'KCLEAN PRODUCTS',
     content: 'I was supplied with clean distilled water, exceeded my expectations and timely delivery.',
     rating: 5,
-    image: 'https://www.shutterstock.com/image-photo/smiling-african-american-millennial-businessman-600nw-1437938108.jpg',
+    image: '👨‍💼',
     isActive: true,
     date: '2025-03-22T14:15:00Z'
   },
-  {
-    id: '2',
-    name: 'Fatima Hassan',
-    position: 'Environmental Officer',
-    company: 'Tanzania Environmental Services',
-    content: 'Their environmental consulting services helped us achieve full compliance. Professional, reliable, and cost-effective solutions.',
-    rating: 5,
-    image: 'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=612x612&w=0&k=20&c=8ssXDNTp1XAPan8Bg6mJRwG7EXHshFO5o0v9SIj96nY=',
-    isActive: true,
-    date: '2025-07-08T09:45:00Z'
-  },
+  // {
+  //   id: '2',
+  //   name: 'Fatima Hassan',
+  //   position: 'Environmental Officer',
+  //   company: 'Tanzania Environmental Services',
+  //   content: 'Their environmental consulting services helped us achieve full compliance. Professional, reliable, and cost-effective solutions.',
+  //   rating: 5,
+  //   image: 'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=612x612&w=0&k=20&c=8ssXDNTp1XAPan8Bg6mJRwG7EXHshFO5o0v9SIj96nY=',
+  //   isActive: true,
+  //   date: '2025-07-08T09:45:00Z'
+  // },
   {
     id: '3',
     name: 'Erick Mahenge',
@@ -581,7 +581,7 @@ const defaultTestimonials: Testimonial[] = [
     company: 'TAIFA INNOVATIONS AND TECHNOLOGIES LTD',
     content: 'I\'m very satisfied with the AC and refrigeration systems installed by Oleum Company Ltd in our office; efficient and professionally done. Their distilled water supply for vehicle batteries in our workshop is reliable and of high quality. Great service and timely delivery!',
     rating: 5,
-    image: 'https://t3.ftcdn.net/jpg/03/62/40/80/360_F_362408093_AlwyWJQbyc6edRlXGaGz3xquwzLGXhkX.jpg',
+    image: '👨‍🔧',
     isActive: true,
     date: '2025-11-14T16:30:00Z'
   }

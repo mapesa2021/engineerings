@@ -260,7 +260,7 @@ export default function About() {
                 <div>
                   <div className="bg-gray-200 rounded-lg overflow-hidden shadow-lg h-96">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.5!2d39.2!3d-6.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDgnMDAuMCJTIDM5wrAxMicwMC4wIkU!5e0!3m2!1sen!2stz!4v1234567890"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.5!2d39.1945!3d-6.7909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDcnMjcuNCJTIDM5wrAxMSc0MC4xIkU!5e0!3m2!1sen!2stz!4v1234567890"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}

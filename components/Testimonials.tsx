@@ -64,25 +64,31 @@ const Testimonials = () => {
             <p className="text-oleum-navy/60 text-lg">No testimonials available yet.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-oleum-gray">
+              <div key={testimonial.id} className="bg-white rounded-xl p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-oleum-gray h-full">
                 <div className="flex items-start mb-6">
                   {testimonial.image ? (
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
+                    testimonial.image.startsWith('http') ? (
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="w-16 h-16 rounded-full object-cover mr-4"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 bg-oleum-yellow rounded-full flex items-center justify-center mr-6">
+                        <span className="text-4xl">{testimonial.image}</span>
+                      </div>
+                    )
                   ) : (
                     <div className="w-16 h-16 bg-oleum-navy rounded-full flex items-center justify-center mr-4">
                       <span className="text-2xl font-bold text-white">{testimonial.name.charAt(0)}</span>
                     </div>
                   )}
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-oleum-navy">{testimonial.name}</h3>
-                    <p className="text-oleum-navy/60 text-sm">{testimonial.position}</p>
-                    <p className="text-oleum-navy/60 text-sm">{testimonial.company}</p>
+                    <h3 className="text-xl font-semibold text-oleum-navy">{testimonial.name}</h3>
+                    <p className="text-oleum-navy/60 text-base">{testimonial.position}</p>
+                    <p className="text-oleum-navy/60 text-base">{testimonial.company}</p>
                     <div className="flex items-center gap-1 mt-2">
                       {[...Array(5)].map((_, i) => (
                         <svg
@@ -97,7 +103,7 @@ const Testimonials = () => {
                     </div>
                   </div>
                 </div>
-                <blockquote className="text-oleum-navy/80 leading-relaxed italic">
+                <blockquote className="text-oleum-navy/80 leading-relaxed italic text-lg">
                   &ldquo;{testimonial.content}&rdquo;
                 </blockquote>
                 <div className="mt-4 text-xs text-oleum-navy/40">

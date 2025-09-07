@@ -5,15 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Next.js specific configuration
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-# API routes redirect
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
+# Static site configuration (no Next.js plugin needed for static export)
 
 [[headers]]
   for = "/*"

@@ -142,7 +142,7 @@ const defaultHeroSlides: HeroSlide[] = [
     title: 'Engineering Excellence in Africa',
     subtitle: 'Your Trusted Partner',
     description: 'Comprehensive engineering solutions for industrial, institutional, and agricultural sectors across Tanzania.',
-    image: 'https://i.postimg.cc/8cCxGJr8/images-27.jpg',
+    image: 'https://i.postimg.cc/WzfC1NMd/veolia-partenaire-ivoirien-africa-usines-production-eau-potable-1084x610.jpg',
     buttonText: 'Explore Services',
     buttonLink: '/services',
     isActive: true,

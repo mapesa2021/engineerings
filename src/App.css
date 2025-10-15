@@ -404,6 +404,225 @@ body {
   margin-right: auto;
 }
 
+/* Enhanced mobile responsiveness */
+@media (max-width: 639px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-12 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mt-16 {
+    margin-top: 2rem;
+  }
+  
+  .my-12 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .p-6 {
+    padding: 1rem;
+  }
+  
+  .sm\:p-8 {
+    padding: 1rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem;
+  }
+  
+  .text-lg {
+    font-size: 1rem;
+  }
+  
+  .quiz-option label {
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    width: 100%;
+  }
+  
+  .popup-content {
+    width: 95%;
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+  
+  .popup-header {
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+  
+  .popup-body {
+    padding: 1.25rem;
+  }
+  
+  .popup-footer {
+    padding: 0 1.25rem 1.25rem;
+  }
+  
+  .form-input {
+    padding: 0.75rem 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .loading-container {
+    padding: 1rem;
+  }
+  
+  .loading-spinner {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .loading-spinner-ring {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+  
+  .loading-text {
+    font-size: 1.125rem;
+  }
+  
+  .loading-subtext {
+    font-size: 0.875rem;
+  }
+}
+
+/* Improved touch targets for mobile */
+.quiz-option label {
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media (max-width: 639px) {
+  .quiz-option label {
+    min-height: 3rem;
+  }
+}
+
+/* Better focus states for mobile */
+.form-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* Mobile-friendly popup adjustments */
+.popup-content {
+  max-width: 95vw;
+  width: 95%;
+  margin: 0.5rem auto;
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    width: 98%;
+    margin: 0.25rem auto;
+  }
+  
+  .popup-title {
+    font-size: 1.25rem;
+  }
+  
+  .popup-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+  }
+  
+  .payment-info {
+    padding: 1rem;
+  }
+  
+  .payment-amount {
+    font-size: 1rem;
+  }
+}
+
+/* Enhanced mobile typography */
+@media (max-width: 480px) {
+  .text-3xl {
+    font-size: 1.375rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.125rem;
+  }
+  
+  .text-xl {
+    font-size: 1rem;
+  }
+  
+  .text-lg {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Mobile-friendly grid adjustments */
+@media (max-width: 639px) {
+  .grid-cols-1 {
+    gap: 1rem;
+  }
+}
+
+/* Improved mobile spacing */
+@media (max-width: 480px) {
+  .mt-6 {
+    margin-top: 1rem;
+  }
+  
+  .mt-4 {
+    margin-top: 0.75rem;
+  }
+  
+  .mt-3 {
+    margin-top: 0.5rem;
+  }
+  
+  .p-4 {
+    padding: 0.75rem;
+  }
+}
+
 /* Loading Animation Styles */
 .loading-container {
   display: flex;

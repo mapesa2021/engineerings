@@ -1,11 +1,11 @@
 [build]
-  command = "npm run export"
-  publish = "out"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Static site configuration (no Next.js plugin needed for static export)
+# Vite project configuration
 
 [[headers]]
   for = "/*"
@@ -13,4 +13,4 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin" 
+    Referrer-Policy = "strict-origin-when-cross-origin"

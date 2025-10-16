@@ -158,3 +158,61 @@ This project is licensed under the MIT License.
 
 Built with ❤️ for environmental sustainability and engineering excellence. # engineering
 >>>>>>> 9c54f16c83725b749e0a47f0a4fda0964b83b1b6
+
+```
+# Addiction Recovery App
+
+This is a React application built with Vite for helping people overcome addiction.
+
+## Deployment Requirements
+
+### Node.js Version
+This project requires Node.js version 20.19.0 or higher. Vite 7.x requires this version.
+
+For local development with nvm:
+```bash
+nvm use
+```
+
+### Environment Variables
+The following environment variables are required for deployment:
+- `ZENOPAY_API_KEY` - API key for the Zeno payment system
+
+### Netlify Deployment
+This project is configured for deployment on Netlify with the following settings:
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node.js version: 20.19.0
+
+## Development
+
+### Install Dependencies
+```bash
+npm install
+```
+
+### Run Development Server
+```bash
+npm run dev
+```
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+## Troubleshooting
+
+### Node.js Version Issues
+If you encounter Node.js version errors, ensure you're using Node.js 20.19.0 or higher:
+```bash
+node --version
+```
+
+### Build Issues
+If you encounter build errors related to Rollup modules, they are typically platform-specific optional dependencies that can be safely ignored on macOS.

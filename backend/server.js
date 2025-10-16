@@ -6,6 +6,11 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Determine environment and set appropriate callback URLs
+const isProduction = process.env.NODE_ENV === 'production';
+const BASE_URL = isProduction ? 'https://oleumengineering.netlify.app' : 'http://localhost:5179';
+const WEBHOOK_URL = `${BASE_URL}/api/zeno-webhook`;
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -53,13 +58,16 @@ app.post('/api/process-payment', async (req, res) => {
       amount
     });
     
-    // Prepare data for Zeno API
+    // Prepare data for Zeno API with proper callback URLs
     const paymentData = {
       order_id,
       buyer_email,
       buyer_name,
       buyer_phone,
-      amount
+      amount,
+      callback_url: WEBHOOK_URL,
+      success_url: `${BASE_URL}/payment-success`,
+      cancel_url: `${BASE_URL}/payment-cancelled`
     };
     
     // Call Zeno API
@@ -172,6 +180,19 @@ app.post('/api/zeno-webhook', (req, res) => {
   }
 });
 
+// Success and cancel endpoints
+app.get('/payment-success', (req, res) => {
+  // For a SPA, we'll send a simple success response
+  // The frontend will handle the UI update
+  res.json({ success: true, message: 'Payment successful' });
+});
+
+app.get('/payment-cancelled', (req, res) => {
+  // For a SPA, we'll send a simple cancellation response
+  // The frontend will handle the UI update
+  res.json({ success: false, message: 'Payment cancelled' });
+});
+
 // Simulate payment completion (for testing - in real implementation, this would be a webhook)
 app.post('/api/simulate-payment-completion/:orderId', (req, res) => {
   const { orderId } = req.params;
@@ -202,6 +223,8 @@ app.post('/api/simulate-payment-completion/:orderId', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Payment processing server running on port ${PORT}`);
+  console.log(`Webhook URL: ${WEBHOOK_URL}`);
+  console.log(`Base URL: ${BASE_URL}`);
 });
 
 module.exports = app;

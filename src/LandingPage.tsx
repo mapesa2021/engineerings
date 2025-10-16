@@ -21,6 +21,44 @@ const LandingPage: React.FC = () => {
   const [paymentStatus, setPaymentStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false); // New state for loading animation
 
+  // Handle hash-based navigation for payment results
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#payment-success') {
+        // Show success message
+        alert('Payment successful! Your e-book will be sent to your email shortly.');
+        // Clear the hash from the URL
+        window.history.replaceState(null, '', ' ');
+        // Close the payment popup if it's open
+        setShowPaymentPopup(false);
+      } else if (window.location.hash === '#payment-cancelled') {
+        // Show cancellation message
+        alert('Payment was cancelled. You can try again when you\'re ready.');
+        // Clear the hash from the URL
+        window.history.replaceState(null, '', ' ');
+        // Close the payment popup if it's open
+        setShowPaymentPopup(false);
+      }
+    };
+
+    // Check hash on initial load
+    handleHashChange();
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  // Check for payment status on component mount
+  useEffect(() => {
+    // This would be where you check for any returning payment status
+    // For now, we're just handling hash-based navigation
+  }, []);
+
   const handleQuizChange = (question: string, value: string) => {
     setQuizAnswers(prev => ({
       ...prev,
@@ -63,8 +101,12 @@ const LandingPage: React.FC = () => {
     setPaymentError('');
     
     try {
+      // Determine API base URL based on environment
+      const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+      const apiBaseUrl = isProduction ? 'https://oleumengineering.netlify.app' : 'http://localhost:5000';
+      
       // Send payment data to our backend with hardcoded test values
-      const response = await fetch('http://localhost:5000/api/process-payment', {
+      const response = await fetch(`${apiBaseUrl}/api/process-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +154,11 @@ const LandingPage: React.FC = () => {
     if (orderId && paymentStatus === 'processing') {
       statusCheckInterval = setInterval(async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/payment-status/${orderId}`);
+          // Use the same API base URL determination as above
+          const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+          const apiBaseUrl = isProduction ? 'https://oleumengineering.netlify.app' : 'http://localhost:5000';
+          
+          const response = await fetch(`${apiBaseUrl}/api/payment-status/${orderId}`);
           const result = await response.json();
           
           if (result.success && result.status === 'completed') {

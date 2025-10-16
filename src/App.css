@@ -146,6 +146,7 @@ body {
   align-items: center;
   z-index: 1000;
   padding: 1rem;
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
 }
 
 .popup-content {
@@ -159,6 +160,7 @@ body {
   position: relative;
   animation: popupAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: none;
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
 }
 
 @keyframes popupAppear {
@@ -239,6 +241,10 @@ body {
   box-sizing: border-box;
   background-color: #f8fafc;
   color: #0f172a; /* Dark text for better visibility */
+  -webkit-appearance: none; /* Remove default styling on iOS */
+  -moz-appearance: none;
+  appearance: none;
+  touch-action: manipulation; /* Optimize for touch */
 }
 
 .form-input:focus {
@@ -281,6 +287,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px; /* Minimum touch target size for mobile */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  -webkit-touch-callout: none; /* Disable callout on iOS */
+  user-select: none; /* Prevent text selection */
+  touch-action: manipulation; /* Optimize for touch */
 }
 
 .btn-cancel {
@@ -298,12 +309,23 @@ body {
   background: linear-gradient(90deg, #0ea5e9, #0d9488);
   color: white;
   box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
+  touch-action: manipulation; /* Optimize for touch */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
 }
 
 .btn-pay:hover {
   background: linear-gradient(90deg, #0284c7, #0f766e);
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3), 0 4px 6px -4px rgba(14, 165, 233, 0.1);
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) {
+  .btn-pay:hover {
+    background: linear-gradient(90deg, #0ea5e9, #0d9488);
+    transform: none;
+    box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
+  }
 }
 
 .btn:disabled {
@@ -491,8 +513,9 @@ body {
   }
   
   .btn {
-    padding: 0.75rem;
+    padding: 0.85rem;
     font-size: 1rem;
+    min-height: 48px; /* Larger touch target on mobile */
   }
   
   .loading-container {
@@ -547,12 +570,14 @@ body {
   max-width: 95vw;
   width: 95%;
   margin: 0.5rem auto;
+  max-height: 95vh;
 }
 
 @media (max-width: 480px) {
   .popup-content {
     width: 98%;
     margin: 0.25rem auto;
+    max-height: 95vh;
   }
   
   .popup-title {

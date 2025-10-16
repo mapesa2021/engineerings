@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 
 const LandingPage: React.FC = () => {
+  const navigate = useNavigate();
   const [quizAnswers, setQuizAnswers] = useState({
     q1: '',
     q2: '',
@@ -11,53 +13,7 @@ const LandingPage: React.FC = () => {
   });
   const [showResults, setShowResults] = useState(false);
   const [error, setError] = useState('');
-  const [showPaymentPopup, setShowPaymentPopup] = useState(false);
-  const [paymentDetails, setPaymentDetails] = useState({
-    phoneNumber: ''
-  });
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentError, setPaymentError] = useState('');
-  const [orderId, setOrderId] = useState('');
-  const [paymentStatus, setPaymentStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false); // New state for loading animation
-
-  // Handle hash-based navigation for payment results
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === '#payment-success') {
-        // Show success message
-        alert('Payment successful! Your e-book will be sent to your email shortly.');
-        // Clear the hash from the URL
-        window.history.replaceState(null, '', ' ');
-        // Close the payment popup if it's open
-        setShowPaymentPopup(false);
-      } else if (window.location.hash === '#payment-cancelled') {
-        // Show cancellation message
-        alert('Payment was cancelled. You can try again when you\'re ready.');
-        // Clear the hash from the URL
-        window.history.replaceState(null, '', ' ');
-        // Close the payment popup if it's open
-        setShowPaymentPopup(false);
-      }
-    };
-
-    // Check hash on initial load
-    handleHashChange();
-    
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
-
-  // Check for payment status on component mount
-  useEffect(() => {
-    // This would be where you check for any returning payment status
-    // For now, we're just handling hash-based navigation
-  }, []);
 
   const handleQuizChange = (question: string, value: string) => {
     setQuizAnswers(prev => ({
@@ -92,105 +48,9 @@ const LandingPage: React.FC = () => {
   };
 
   const handlePaymentClick = () => {
-    setShowPaymentPopup(true);
+    // Navigate to the payment page instead of showing popup
+    navigate('/payment', { state: { from: '/' } });
   };
-
-  const handlePaymentSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    setPaymentError('');
-    
-    try {
-      // Determine API base URL based on environment
-      const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-      const apiBaseUrl = isProduction ? 'https://oleumengineering.netlify.app' : 'http://localhost:5000';
-      
-      // Send payment data to our backend with hardcoded test values
-      const response = await fetch(`${apiBaseUrl}/api/process-payment`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          buyer_email: 'test@example.com', // Hardcoded test email
-          buyer_name: 'Test User', // Hardcoded test name
-          buyer_phone: paymentDetails.phoneNumber,
-          amount: 30000 // 30,000 Tsh
-        })
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
-        // Store order ID for status checking
-        setOrderId(result.orderId);
-        // Show processing message
-        setPaymentError(`Processing... USSD has been sent to your phone ${paymentDetails.phoneNumber}. Please respond to the prompt to complete your payment of 30,000 Tsh.`);
-        setPaymentStatus('processing');
-      } else {
-        setPaymentError(result.error || 'Payment failed. Please try again.');
-        setIsProcessing(false);
-      }
-      
-    } catch (error) {
-      console.error('Payment error:', error);
-      setPaymentError('An error occurred while processing your payment. Please try again.');
-      setIsProcessing(false);
-    }
-  };
-
-  const handlePaymentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setPaymentDetails(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Poll for payment status
-  useEffect(() => {
-    let statusCheckInterval: ReturnType<typeof setInterval>;
-    
-    if (orderId && paymentStatus === 'processing') {
-      statusCheckInterval = setInterval(async () => {
-        try {
-          // Use the same API base URL determination as above
-          const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-          const apiBaseUrl = isProduction ? 'https://oleumengineering.netlify.app' : 'http://localhost:5000';
-          
-          const response = await fetch(`${apiBaseUrl}/api/payment-status/${orderId}`);
-          const result = await response.json();
-          
-          if (result.success && result.status === 'completed') {
-            // Payment completed - show success message and close popup after delay
-            setPaymentError('Payment successful! Redirecting you to download your e-book...');
-            clearInterval(statusCheckInterval);
-            
-            // Close popup and show success after delay
-            setTimeout(() => {
-              setIsProcessing(false);
-              setShowPaymentPopup(false);
-              setOrderId('');
-              setPaymentStatus('');
-              setPaymentDetails({ phoneNumber: '' });
-              
-              // Show success message to user (in a real app, you might redirect to a download page)
-              alert('Payment successful! Your e-book will be sent to your email shortly.');
-            }, 3000);
-          }
-        } catch (error) {
-          console.error('Error checking payment status:', error);
-        }
-      }, 5000); // Check every 5 seconds
-    }
-    
-    // Cleanup interval on component unmount or when dependencies change
-    return () => {
-      if (statusCheckInterval) {
-        clearInterval(statusCheckInterval);
-      }
-    };
-  }, [orderId, paymentStatus]);
 
   return (
     <>
@@ -545,100 +405,6 @@ const LandingPage: React.FC = () => {
         </section>
       </main>
       <Footer />
-
-      {/* Payment Popup */}
-      {showPaymentPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <div className="popup-header">
-              <h3 className="popup-title">Complete Your Purchase</h3>
-              <button 
-                onClick={() => setShowPaymentPopup(false)}
-                className="popup-close"
-                disabled={isProcessing && paymentStatus === 'processing'}
-              >
-                &times;
-              </button>
-            </div>
-            <div className="popup-body">
-              <p className="text-gray-600 mb-4 sm:mb-6">Enter your phone number to complete the payment of <strong>30,000 Tsh</strong></p>
-              
-              {paymentError && !isProcessing && (
-                <div className="bg-red-50 text-red-700 p-3 rounded-lg mb-4">
-                  {paymentError}
-                </div>
-              )}
-              
-              {isProcessing && paymentError && (
-                <div className={`p-3 rounded-lg mb-4 ${paymentStatus === 'processing' ? 'bg-blue-50 text-blue-700' : 'bg-red-50 text-red-700'}`}>
-                  {paymentError}
-                </div>
-              )}
-              
-              <form onSubmit={handlePaymentSubmit}>
-                <div className="form-group">
-                  <label htmlFor="phoneNumber" className="form-label">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={paymentDetails.phoneNumber}
-                    onChange={handlePaymentChange}
-                    required
-                    className="form-input"
-                    placeholder="e.g., 0754546567"
-                    disabled={isProcessing}
-                  />
-                </div>
-                
-                <div className="payment-info">
-                  <p className="text-sm text-gray-700">
-                    <span className="payment-amount">Amount:</span> 30,000 Tsh
-                  </p>
-                  <p className="text-sm text-gray-700 mt-1">
-                    After submitting, you will receive a prompt on your phone to complete the mobile money payment.
-                  </p>
-                </div>
-                
-                {!isProcessing && (
-                  <div className="popup-footer">
-                    <button
-                      type="button"
-                      onClick={() => setShowPaymentPopup(false)}
-                      className="btn btn-cancel"
-                      disabled={isProcessing}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn btn-pay"
-                      disabled={isProcessing}
-                    >
-                      Pay Now
-                    </button>
-                  </div>
-                )}
-                
-                {isProcessing && (
-                  <div className="popup-footer">
-                    <button
-                      type="button"
-                      onClick={() => setShowPaymentPopup(false)}
-                      className="btn btn-cancel"
-                      disabled={paymentStatus === 'processing'}
-                    >
-                      {paymentStatus === 'processing' ? 'Checking Status...' : 'Close'}
-                    </button>
-                  </div>
-                )}
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

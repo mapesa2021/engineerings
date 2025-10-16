@@ -9,6 +9,9 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
+      external: [
+        '@rollup/rollup-linux-x64-gnu'
+      ],
       output: {
         manualChunks: undefined,
       },

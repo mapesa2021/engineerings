@@ -8,11 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "npx --yes --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu@latest || echo 'Optional dependency not installed'",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "export": "tsc -b && vite build"
+    "export": "vite build"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -31,6 +30,9 @@
     "globals": "^16.4.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
-    "vite": "^7.1.7"
+    "vite": "^7.1.10"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.34.6"
   }
 }

@@ -1,46 +1,43 @@
 #!/bin/bash
 
-# 🚀 Olerum Engineering Deployment Script
+# Deployment script for the addiction recovery app
 
-echo "🌱 Olerum Engineering - Building for Production..."
+echo "Starting deployment process..."
 
-# Check if we're in the right directory
-if [ ! -f "package.json" ]; then
-    echo "❌ Error: package.json not found. Please run this script from the olerum-engineering directory."
-    exit 1
-fi
-
-# Clean previous builds
-echo "🧹 Cleaning previous builds..."
-rm -rf .next out
-
-# Install dependencies
-echo "📦 Installing dependencies..."
-npm install
-
-# Build the project
-echo "🔨 Building project..."
+# Build the frontend
+echo "Building frontend..."
 npm run build
 
-# Export static files
-echo "📤 Exporting static files..."
-npm run export
+if [ $? -ne 0 ]; then
+  echo "Frontend build failed!"
+  exit 1
+fi
 
-# Create deployment package
-echo "📦 Creating deployment package..."
-cd out
+echo "Frontend build completed successfully!"
 
-# Create zip file
-zip -r ../olerum-engineering-production.zip .
+# Add all changes to git
+echo "Adding changes to git..."
+git add .
 
-# Get file size
-FILE_SIZE=$(du -h olerum-engineering-production.zip | cut -f1)
+# Check if there are changes to commit
+if ! git diff-index --quiet HEAD --; then
+  echo "Enter commit message:"
+  read commit_message
+  git commit -m "$commit_message"
+  
+  # Push to repository
+  echo "Pushing to repository..."
+  git push origin master
+  
+  if [ $? -ne 0 ]; then
+    echo "Failed to push to repository!"
+    exit 1
+  fi
+  
+  echo "Changes pushed to repository successfully!"
+else
+  echo "No changes to commit."
+fi
 
-# Success message
-echo ""
-echo "✅ Deployment package created successfully!"
-echo "📁 File: olerum-engineering-production.zip"
-echo "📏 Size: $FILE_SIZE"
-echo "📍 Location: $(pwd)/olerum-engineering-production.zip"
-echo ""
-echo "🚀 Ready for deployment to any static hosting provider!" 
+echo "Deployment process completed!"
+echo "Netlify will automatically deploy the new version."

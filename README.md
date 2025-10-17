@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -72,147 +71,89 @@ export default defineConfig([
   },
 ])
 ```
-=======
-# Olerum Engineering 🌱
 
-A modern, responsive website built with Next.js, TypeScript, and Tailwind CSS for environmental engineering and sustainability projects.
+```
+
+
+```
+# Addiction Recovery App
+
+A React-based application designed to help individuals overcome addiction through self-awareness and practical guidance.
 
 ## Features
 
-- 🌿 **Modern Design**: Clean, professional interface with smooth animations
-- 📱 **Responsive**: Works perfectly on all devices
-- ⚡ **Fast Performance**: Optimized for speed and SEO
-- 🔧 **Admin Panel**: Easy content management system
-- 📝 **Blog System**: Dynamic blog with markdown support
-- 🌳 **Project Showcase**: Beautiful project galleries
-- 📧 **Contact Forms**: Integrated contact and newsletter systems
-- 💳 **Payment Integration**: Secure donation and payment processing
+- Interactive self-assessment quiz
+- Educational content about addiction science
+- Mobile-responsive design
+- Payment integration for e-book purchase
+- Modern UI with smooth animations
 
-## Quick Start
+## Technology Stack
 
-1. **Clone the repository**
+- **Frontend**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: CSS with custom utility classes
+- **Backend**: Node.js/Express (for local development)
+- **Deployment**: Netlify with Netlify Functions
+
+## Development Setup
+
+1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd olerum-engineering/
+   git clone https://github.com/mapesa2021/engineering.git
+   cd engineering
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Run the development server**
+3. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## Project Structure
-
-```
-olerum-engineering/
-├── components/          # Reusable React components
-├── pages/              # Next.js pages and routing
-├── styles/             # Global styles and Tailwind config
-├── public/             # Static assets
-├── lib/                # Database and utility functions
-├── hooks/              # Custom React hooks
-└── utils/              # Helper functions
-```
-
-## Admin Panel
-
-Access the admin panel at `/admin` with:
-- **Username**: `admin`
-- **Password**: `olerum2024`
+4. Start the backend server (in a separate terminal):
+   ```bash
+   cd backend
+   node server.js
+   ```
 
 ## Deployment
 
-The project is configured for easy deployment to:
-- Netlify
-- Vercel
-- Any static hosting provider
+The application is configured for deployment to Netlify:
 
-## Technologies Used
+1. Connect the repository to Netlify
+2. Set the build command to `npm run build`
+3. Set the publish directory to `dist`
+4. Add the `ZENO_API_KEY` environment variable in Netlify settings
 
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Supabase** - Database and authentication
-- **React Hot Toast** - Notifications
+For detailed deployment instructions, see [DEPLOYMENT_INSTRUCTIONS.md](DEPLOYMENT_INSTRUCTIONS.md).
+
+## Payment Integration
+
+The app integrates with ZenoPay for mobile money payments:
+- Payments are processed through Netlify Functions
+- Real-time payment status checking
+- Automatic user redirection upon successful payment
+
+## Mobile Optimization
+
+The app is fully optimized for mobile devices:
+- Responsive design
+- Touch-friendly interface
+- Properly sized touch targets
+- Fast loading times
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Submit a pull request
+4. Commit and push to your fork
+5. Create a pull request
 
-## License
+## Support
 
-This project is licensed under the MIT License.
-
----
-
-Built with ❤️ for environmental sustainability and engineering excellence. # engineering
->>>>>>> 9c54f16c83725b749e0a47f0a4fda0964b83b1b6
-
-```
-# Addiction Recovery App
-
-This is a React application built with Vite for helping people overcome addiction.
-
-## Deployment Requirements
-
-### Node.js Version
-This project requires Node.js version 20.19.0 or higher. Vite 7.x requires this version.
-
-For local development with nvm:
-```bash
-nvm use
-```
-
-### Environment Variables
-The following environment variables are required for deployment:
-- `ZENOPAY_API_KEY` - API key for the Zeno payment system
-
-### Netlify Deployment
-This project is configured for deployment on Netlify with the following settings:
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Node.js version: 20.19.0
-
-## Development
-
-### Install Dependencies
-```bash
-npm install
-```
-
-### Run Development Server
-```bash
-npm run dev
-```
-
-### Build for Production
-```bash
-npm run build
-```
-
-### Preview Production Build
-```bash
-npm run preview
-```
-
-## Troubleshooting
-
-### Node.js Version Issues
-If you encounter Node.js version errors, ensure you're using Node.js 20.19.0 or higher:
-```bash
-node --version
-```
-
-### Build Issues
-If you encounter build errors related to Rollup modules, they are typically platform-specific optional dependencies that can be safely ignored on macOS.
+For deployment issues or questions, please refer to the documentation or contact the development team.

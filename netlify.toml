@@ -5,9 +5,13 @@
 
 [build.environment]
   NODE_VERSION = "20.19.0"
+  NPM_FLAGS = "--no-optional"
 
 # Vite project configuration
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[plugins]]
+  package = "@netlify/plugin-vite"

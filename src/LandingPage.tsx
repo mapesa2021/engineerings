@@ -70,14 +70,14 @@ const LandingPage: React.FC = () => {
         buyer_email: 'test@example.com', // Hardcoded test email
         buyer_name: 'Test User', // Hardcoded test name
         buyer_phone: paymentDetails.phoneNumber,
-        amount: 30000 // 30,000 Tsh
+        amount: 15000 // 15,000 Tsh
       });
       
       if (result.success) {
         // Store order ID for status checking
         setOrderId(result.orderId);
         // Show processing message
-        setPaymentError(`Processing... USSD has been sent to your phone ${paymentDetails.phoneNumber}. Please respond to the prompt to complete your payment of 30,000 Tsh.`);
+        setPaymentError(`Processing... USSD has been sent to your phone ${paymentDetails.phoneNumber}. Please respond to the prompt to complete your payment of 15,000 Tsh.`);
         setPaymentStatus('processing');
       } else {
         setPaymentError(result.error || 'Payment failed. Please try again.');
@@ -485,7 +485,7 @@ const LandingPage: React.FC = () => {
               onClick={handlePaymentClick}
               className="cta-button"
             >
-              Get the E-book and Start Today for 30,000 Tsh
+              Get the E-book and Start Today for 15,000 Tsh
             </button>
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600"><strong>30-Day Money-Back Guarantee:</strong> If this guide doesn't help you, get a full refund. No questions asked.</p>
           </div>
@@ -508,7 +508,7 @@ const LandingPage: React.FC = () => {
               </button>
             </div>
             <div className="popup-body">
-              <p className="text-gray-600 mb-4 sm:mb-6">Enter your phone number to complete the payment of <strong>30,000 Tsh</strong></p>
+              <p className="text-gray-600 mb-4 sm:mb-6">Enter your phone number to complete the payment of <strong>15,000 Tsh</strong></p>
               
               {paymentError && !isProcessing && (
                 <div className="bg-red-50 text-red-700 p-3 rounded-lg mb-4">
@@ -544,7 +544,7 @@ const LandingPage: React.FC = () => {
                 
                 <div className="payment-info">
                   <p className="text-sm text-gray-700">
-                    <span className="payment-amount">Amount:</span> 30,000 Tsh
+                    <span className="payment-amount">Amount:</span> 15,000 Tsh
                   </p>
                   <p className="text-sm text-gray-700 mt-1">
                     After submitting, you will receive a prompt on your phone to complete the mobile money payment.

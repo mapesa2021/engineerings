@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
+import { paymentApi } from './api';
 
 const LandingPage: React.FC = () => {
   const [quizAnswers, setQuizAnswers] = useState({
@@ -65,22 +66,14 @@ const LandingPage: React.FC = () => {
     
     try {
       // Send payment data to our backend with hardcoded test values
-      const response = await fetch('http://localhost:5000/api/process-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          buyer_email: 'test@example.com', // Hardcoded test email
-          buyer_name: 'Test User', // Hardcoded test name
-          buyer_phone: paymentDetails.phoneNumber,
-          amount: 30000 // 30,000 Tsh
-        })
+      const result = await paymentApi.processPayment({
+        buyer_email: 'test@example.com', // Hardcoded test email
+        buyer_name: 'Test User', // Hardcoded test name
+        buyer_phone: paymentDetails.phoneNumber,
+        amount: 30000 // 30,000 Tsh
       });
       
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
+      if (result.success) {
         // Store order ID for status checking
         setOrderId(result.orderId);
         // Show processing message
@@ -113,8 +106,7 @@ const LandingPage: React.FC = () => {
     if (orderId && paymentStatus === 'processing') {
       statusCheckInterval = setInterval(async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/payment-status/${orderId}`);
-          const result = await response.json();
+          const result = await paymentApi.checkPaymentStatus(orderId);
           
           if (result.success && result.status === 'completed') {
             // Payment completed - show success message and close popup after delay

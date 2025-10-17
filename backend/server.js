@@ -1,14 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // In-memory storage for payment statuses (in production, use a database)
 const paymentStatuses = new Map();
@@ -197,6 +201,11 @@ app.post('/api/simulate-payment-completion/:orderId', (req, res) => {
     message: 'Payment status updated to completed',
     orderId
   });
+});
+
+// Serve the React app for any non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 // Start server

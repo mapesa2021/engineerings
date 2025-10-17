@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+node_modules/
+.env
+*.log
+=======
 # Logs
 logs
 *.log
@@ -54,3 +59,4 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+>>>>>>> b49dc31bdbf206e002d70d9edda9a015f46bf2ea

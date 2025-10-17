@@ -1,3 +1,353 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclaim Your Focus - A Guide to Overcoming Porn Addiction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .quiz-option:hover {
+            background-color: #f0f4ff;
+        }
+        .quiz-option input:checked + label {
+            background-color: #dbeafe;
+            border-color: #60a5fa;
+        }
+        #payment-modal.hidden {
+            display: none;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <main class="container mx-auto px-6 py-12 max-w-4xl">
+        <!-- Section 1, 2, 3 are unchanged -->
+        <section class="text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                The Cycle You Can't Seem to Break.
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
+                If you’re reading this, you’ve likely taken a step that requires immense courage. You’ve decided to confront something in your life that you feel is holding you back.
+            </p>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                I want to start by saying one thing loud and clear: <strong>You are not alone.</strong>
+            </p>
+        </section>
+
+        <div class="my-12 border-t border-gray-200"></div>
+
+        <section>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Have You Ever Wondered Why It's So Hard to "Just Stop"?</h2>
+            <p class="mt-4 text-lg text-gray-700">
+                It’s not a failure of character or a lack of willpower. The answer lies in the powerful, predictable science of your brain. Your brain is wired with a motivation system, powered by a chemical called dopamine. It’s designed to make you repeat activities essential for survival.
+            </p>
+            <p class="mt-4 text-lg text-gray-700">
+                Internet pornography is a "supernormal stimulus"—it's designed to be more novel and stimulating than anything in the real world. When you watch it, your brain releases a massive flood of dopamine. Your brain logs this as incredibly important and creates a powerful loop:
+            </p>
+            <div class="mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <p class="text-center text-lg"><span class="font-semibold">Cue</span> (feeling bored or stressed) → <span class="font-semibold">Craving</span> → <span class="font-semibold">Response</span> (watching porn) → <span class="font-semibold">Reward</span> (intense dopamine rush).</p>
+            </div>
+            <p class="mt-6 text-lg text-gray-700">
+                The more you repeat this, the stronger the wiring becomes. Over time, your brain adapts and what used to work no longer does. This is why you might seek out more extreme content. You're not broken—<strong class="text-blue-600">you're caught in a biological loop.</strong>
+            </p>
+        </section>
+
+        <div class="my-12 border-t border-gray-200"></div>
+
+        <section>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">It's More Than Just Brain Chemistry</h2>
+            <p class="mt-4 text-lg text-gray-700 text-center max-w-3xl mx-auto">
+                This habit almost always serves a purpose—it's a way to cope with other difficult feelings. It’s an instant, temporary escape from the real world.
+            </p>
+            <h3 class="mt-6 text-xl font-semibold text-gray-800 text-center">When are you most likely to turn to the screen?</h3>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">When you're feeling <strong class="text-red-600">Stressed?</strong></div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">When you're feeling <strong class="text-yellow-600">Bored?</strong></div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">When you're feeling <strong class="text-blue-600">Lonely?</strong></div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">When you're feeling <strong class="text-indigo-600">Anxious?</strong></div>
+            </div>
+            <p class="mt-6 text-lg text-gray-700">
+                For many, it becomes a form of self-medication. A short-term solution that creates a bigger long-term problem. Once you know what you're running from, you can start to find healthier ways to face it.
+            </p>
+        </section>
+
+        <div class="my-12 border-t border-gray-200"></div>
+
+        <section id="quiz-section" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">The 60-Second Self-Awareness Quiz</h2>
+            <p class="mt-3 text-lg text-gray-600 text-center">Answer these 5 questions honestly to see your pattern more clearly.</p>
+            <form id="awareness-quiz" class="mt-8 space-y-8">
+                <!-- Question 1 -->
+                <div>
+                    <p class="font-semibold text-lg text-gray-800">1. After you engage in the habit, how do you typically feel?</p>
+                    <div class="mt-3 space-y-2">
+                        <div class="quiz-option"><input type="radio" id="q1a" name="q1" value="A brief sense of relief, followed by a wave of shame or regret." class="hidden"><label for="q1a" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">A brief sense of relief, followed by a wave of shame or regret.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q1b" name="q1" value="Mostly fine, but I worry about the time I've wasted." class="hidden"><label for="q1b" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Mostly fine, but I worry about the time I've wasted.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q1c" name="q1" value="Emotionally numb or empty." class="hidden"><label for="q1c" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Emotionally numb or empty.</label></div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div>
+                    <p class="font-semibold text-lg text-gray-800">2. How has the time you spend on this habit changed over the last year?</p>
+                    <div class="mt-3 space-y-2">
+                        <div class="quiz-option"><input type="radio" id="q2a" name="q2" value="It has noticeably increased." class="hidden"><label for="q2a" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">It has noticeably increased.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q2b" name="q2" value="It has stayed about the same." class="hidden"><label for="q2b" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">It has stayed about the same.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q2c" name="q2" value="It varies wildly depending on my stress levels." class="hidden"><label for="q2c" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">It varies wildly depending on my stress levels.</label></div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div>
+                    <p class="font-semibold text-lg text-gray-800">3. Have you found yourself looking at content you once considered too extreme or strange?</p>
+                     <div class="mt-3 space-y-2">
+                        <div class="quiz-option"><input type="radio" id="q3a" name="q3" value="Yes, my tastes have definitely escalated over time." class="hidden"><label for="q3a" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Yes, my tastes have definitely escalated over time.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q3b" name="q3" value="Sometimes, out of curiosity." class="hidden"><label for="q3b" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Sometimes, out of curiosity.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q3c" name="q3" value="No, I stick to the same types of content." class="hidden"><label for="q3c" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">No, I stick to the same types of content.</label></div>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div>
+                    <p class="font-semibold text-lg text-gray-800">4. Do you use porn and masturbation as a way to cope with stress, loneliness, or boredom?</p>
+                     <div class="mt-3 space-y-2">
+                        <div class="quiz-option"><input type="radio" id="q4a" name="q4" value="Yes, it's one of my main ways to deal with those feelings." class="hidden"><label for="q4a" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Yes, it's one of my main ways to deal with those feelings.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q4b" name="q4" value="Sometimes, but not always." class="hidden"><label for="q4b" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Sometimes, but not always.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q4c" name="q4" value="No, it's completely separate from my emotional state." class="hidden"><label for="q4c" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">No, it's completely separate from my emotional state.</label></div>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div>
+                    <p class="font-semibold text-lg text-gray-800">5. If you could press a button and be free of this cycle tomorrow, would you?</p>
+                     <div class="mt-3 space-y-2">
+                        <div class="quiz-option"><input type="radio" id="q5a" name="q5" value="Absolutely, in a heartbeat." class="hidden"><label for="q5a" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">Absolutely, in a heartbeat.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q5b" name="q5" value="I'm not sure. Part of me would miss it." class="hidden"><label for="q5b" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">I'm not sure. Part of me would miss it.</label></div>
+                        <div class="quiz-option"><input type="radio" id="q5c" name="q5" value="I think about it often." class="hidden"><label for="q5c" class="block w-full p-4 border border-gray-300 rounded-lg cursor-pointer">I think about it often.</label></div>
+                    </div>
+                </div>
+                <div class="text-center pt-4">
+                     <p id="quiz-error" class="text-red-500 mb-4 h-6"></p>
+                    <button type="submit" class="cta-button w-full sm:w-auto bg-blue-600 text-white font-bold text-lg px-12 py-4 rounded-lg shadow-lg hover:bg-blue-700">
+                        ✨ Get Your Personal First Step
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Section 5: The Results & Offer (Hidden by default) -->
+        <section id="results-section" class="hidden mt-16">
+            
+            <!-- New Response Area -->
+            <div id="response-area" class="bg-blue-50 border-2 border-blue-200 p-6 sm:p-8 rounded-xl shadow-lg">
+                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Understanding Your Pattern</h2>
+                 <div id="response-content">
+                    <p id="response-text" class="mt-4 text-lg text-gray-800 text-center">
+                        Your answers show you're in a common but difficult cycle.<br><br>
+                        The feelings of regret, the escalating use, the reliance on it for emotional coping... these are classic signs of the loop we talked about.<br><br>
+                        But the most important answer you gave is that you want to change. That desire is the most powerful tool you have.<br><br>
+                        Now that you see the pattern, you need a plan to break it.
+                    </p>
+                 </div>
+            </div>
+
+            <div id="offer-section" class="mt-12 bg-white p-6 sm:p-10 rounded-xl shadow-2xl border-2 border-green-500">
+                <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">That was just your first step. The complete roadmap is waiting.</h2>
+                    <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto">
+                        Now that you have a starting point, you need a full plan to break the cycle for good.
+                    </p>
+                </div>
+
+                <div class="my-10 border-t border-gray-200"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                     <div class="md:w-1/3 flex-shrink-0">
+                        <img src="https://placehold.co/600x800/e9ecef/334155?text=Reclaim\nYour\nFocus" alt="E-book cover" class="rounded-lg shadow-lg w-full max-w-xs mx-auto">
+                    </div>
+                    <div class="md:w-2/3">
+                        <span class="text-sm font-semibold text-blue-600 uppercase tracking-wider">THE NEXT STEP</span>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-2">Introducing: <br><span class="text-blue-700">Reclaim Your Focus</span></h3>
+                        <p class="mt-4 text-lg text-gray-700">
+                           This 15-page e-book is the practical, step-by-step roadmap to guide you out of the cycle. It's the plan you've been missing.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-gray-700">
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">✓</span> <span>A powerful exercise to build an unshakable motivation to quit.</span></li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">✓</span> <span>A practical toolkit with strategies like "Urge Surfing" to manage cravings.</span></li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">✓</span> <span>A step-by-step "Relapse Playbook" to handle setbacks without shame.</span></li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">✓</span> <span>Guidance on reclaiming real intimacy and building a life of purpose.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="mt-10 text-center">
+                    <button id="open-payment-modal-btn" class="cta-button inline-block bg-green-600 text-white font-bold text-xl px-12 py-5 rounded-lg shadow-lg hover:bg-green-700">
+                        Get the E-book for 29,000 TSh
+                    </button>
+                    <p class="mt-4 text-sm text-gray-600"><strong>30-Day Money-Back Guarantee:</strong> If this guide doesn't help you, get a full refund. No questions asked.</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reclaim Your Focus. All Rights Reserved.</p>
+            <p class="mt-4 text-xs max-w-2xl mx-auto">
+                Disclaimer: This website and e-book provide information for self-help. They are not a substitute for professional medical or psychological advice. Always seek the advice of a qualified health provider.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg shadow-2xl p-6 sm:p-8 w-full max-w-md relative">
+            <button id="close-payment-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">Complete Your Purchase</h2>
+            <p class="text-center text-gray-600 mb-6">Enter your phone number to pay <strong>29,000 TSh</strong> with Mobile Money.</p>
+            
+            <form id="payment-form">
+                <div class="mb-6">
+                    <label for="buyer_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number (Tanzania)</label>
+                    <input type="tel" id="buyer_phone" name="buyer_phone" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="07XXXXXXXX">
+                </div>
+                
+                <button type="submit" id="submit-payment-btn" class="w-full cta-button bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Pay 29,000 TSh
+                </button>
+            </form>
+            <div id="payment-status" class="mt-4 text-center h-6"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizForm = document.getElementById('awareness-quiz');
+            const quizSection = document.getElementById('quiz-section');
+            const resultsSection = document.getElementById('results-section');
+            const quizErrorElement = document.getElementById('quiz-error');
+            
+            const offerSection = document.getElementById('offer-section');
+
+            quizForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                quizErrorElement.textContent = '';
+                
+                const answers = {
+                    q1: quizForm.querySelector('input[name="q1"]:checked'),
+                    q2: quizForm.querySelector('input[name="q2"]:checked'),
+                    q3: quizForm.querySelector('input[name="q3"]:checked'),
+                    q4: quizForm.querySelector('input[name="q4"]:checked'),
+                    q5: quizForm.querySelector('input[name="q5"]:checked'),
+                };
+
+                if (Object.values(answers).every(answer => answer !== null)) {
+                    quizSection.classList.add('hidden');
+                    resultsSection.classList.remove('hidden');
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    quizErrorElement.textContent = 'Please answer all questions to see your pattern.';
+                }
+            });
+
+            const paymentModal = document.getElementById('payment-modal');
+            const openPaymentBtn = document.getElementById('open-payment-modal-btn');
+            const closePaymentBtn = document.getElementById('close-payment-modal-btn');
+            const paymentForm = document.getElementById('payment-form');
+            const paymentStatus = document.getElementById('payment-status');
+            const submitPaymentBtn = document.getElementById('submit-payment-btn');
+
+            openPaymentBtn.addEventListener('click', () => {
+                paymentModal.classList.remove('hidden');
+            });
+
+            const closeModal = () => {
+                paymentModal.classList.add('hidden');
+                paymentStatus.textContent = '';
+                paymentForm.reset();
+            }
+            
+            closePaymentBtn.addEventListener('click', closeModal);
+            paymentModal.addEventListener('click', (e) => {
+                 if(e.target === paymentModal) {
+                    closeModal();
+                 }
+            });
+
+            paymentForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                
+                const buyerPhone = document.getElementById('buyer_phone').value;
+
+                paymentStatus.textContent = 'Processing payment...';
+                paymentStatus.classList.remove('text-green-600', 'text-red-600');
+                paymentStatus.classList.add('text-blue-600');
+                submitPaymentBtn.disabled = true;
+                submitPaymentBtn.textContent = 'Waiting...';
+                
+                const backendApiUrl = '/api/process-payment'; 
+
+                try {
+                    const response = await fetch(backendApiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ buyer_phone: buyerPhone })
+                    });
+                    
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        paymentStatus.textContent = result.message || 'Request sent! Check your phone to complete payment.';
+                        paymentStatus.classList.remove('text-blue-600', 'text-red-600');
+                        paymentStatus.classList.add('text-green-600');
+                        setTimeout(closeModal, 5000);
+                    } else {
+                        paymentStatus.textContent = `Failed: ${result.message || 'Please try again.'}`;
+                        paymentStatus.classList.remove('text-blue-600', 'text-green-600');
+                        paymentStatus.classList.add('text-red-600');
+                    }
+
+                } catch (error) {
+                    paymentStatus.textContent = 'A network error occurred. Please try again.';
+                    paymentStatus.classList.remove('text-blue-600', 'text-green-600');
+                    paymentStatus.classList.add('text-red-600');
+                } finally {
+                    submitPaymentBtn.disabled = false;
+                    submitPaymentBtn.textContent = 'Pay 29,000 TSh';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+=======
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -11,3 +361,4 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+>>>>>>> b49dc31bdbf206e002d70d9edda9a015f46bf2ea

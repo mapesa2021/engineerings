@@ -464,7 +464,7 @@ const LandingPage: React.FC = () => {
 
           <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
             <div className="md:w-1/3 flex-shrink-0">
-              <img src="https://placehold.co/600x800/e9ecef/334155?text=Reclaim\nYour\nFocus" alt="E-book cover" className="rounded-lg shadow-lg w-full max-w-xs mx-auto" />
+              <img src="https://i.ibb.co/4RGPZp3P/Reclaim-Your-Focus-Cover.jpg" alt="E-book cover" className="rounded-lg shadow-lg w-full max-w-xs mx-auto" />
             </div>
             <div className="md:w-2/3">
               <span className="text-xs sm:text-sm font-semibold text-blue-600 uppercase tracking-wider">THE NEXT STEP</span>
